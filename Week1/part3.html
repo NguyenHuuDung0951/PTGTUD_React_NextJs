@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Dophins Team
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+       <div class="accordion-body">
+        <label for="">Vui lòng nhập điểm</label><br>
+        <input type="text">
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        Koalas Team
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <label for="">Vui lòng nhập điểm</label><br>
+        <input type="text">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+        function calcAverage(a, b, c) {
+          return (a + b + c) / 3;
+        }
+
+        function announceBasicResult(nameA, avgA, nameB, avgB) {
+          if (avgA > avgB) console.log(`${nameA} win (${avgA} vs ${avgB})`);
+          else if (avgB > avgA) console.log(`${nameB} win (${avgB} vs ${avgA})`);
+          else console.log(`Draw (${avgA} vs ${avgB})`);
+        }
+
+        function announceWithMin(nameA, avgA, nameB, avgB, minScore, drawRequiresMin = false) {
+          if (avgA > avgB && avgA >= minScore) console.log(`${nameA} win the trophy (${avgA} vs ${avgB})`);
+          else if (avgB > avgA && avgB >= minScore) console.log(`${nameB} win the trophy (${avgB} vs ${avgA})`);
+          else if (avgA === avgB && (!drawRequiresMin || (avgA >= minScore && avgB >= minScore))) console.log(`Draw (${avgA} vs ${avgB})`);
+          else console.log(`No team wins the trophy (${avgA} vs ${avgB})`);
+        }
+
+        const d1 = [96, 108, 89];
+        const k1 = [88, 91, 110];
+        const avgD1 = calcAverage(...d1);
+        const avgK1 = calcAverage(...k1);
+        console.log('--- Data 1: Basic comparison ---');
+        announceBasicResult('Dolphins', avgD1, 'Koalas', avgK1);
+
+        const d2 = [97, 112, 101];
+        const k2 = [109, 95, 123];
+        const avgD2 = calcAverage(...d2);
+        const avgK2 = calcAverage(...k2);
+        console.log('--- Data Bonus 1: Minimum score 100 for wins ---');
+        announceWithMin('Dolphins', avgD2, 'Koalas', avgK2, 100, false);
+
+        const d3 = [97, 112, 101];
+        const k3 = [109, 95, 106];
+        const avgD3 = calcAverage(...d3);
+        const avgK3 = calcAverage(...k3);
+        console.log('--- Data Bonus 2: Minimum score 100 applies to draw ---');
+        announceWithMin('Dolphins', avgD3, 'Koalas', avgK3, 100, true);
+</script>
+</body>
+</html>
