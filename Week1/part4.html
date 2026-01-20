@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+          <div style="max-width:420px;margin:40px auto;font-family:Arial,Helvetica,sans-serif;padding:16px;border:1px solid #ddd;border-radius:8px;">
+            <h2 style="margin:0 0 12px">Tip Calculator</h2>
+            <label style="display:block;margin-bottom:8px">Bill amount
+                <input id="billInput" type="number" value="275" style="width:100%;padding:8px;margin-top:6px;box-sizing:border-box" />
+            </label>
+            <div style="display:flex;gap:8px;margin:10px 0">
+                <button id="calcBtn" style="flex:1;padding:8px">Calculate</button>
+                <button id="clearBtn" style="flex:1;padding:8px">Clear</button>
+            </div>
+            <div id="result" style="background:#f9f9f9;padding:10px;border-radius:6px;min-height:48px"></div>
+
+            <div style="margin-top:12px">
+                <small>Quick samples:</small>
+                <div style="margin-top:6px;display:flex;gap:6px">
+                    <button class="sample" data-bill="275">275</button>
+                    <button class="sample" data-bill="40">40</button>
+                    <button class="sample" data-bill="430">430</button>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script>
+        const bills = [275, 40, 430];
+
+  
+
+
+            function format(n) { return Number(n.toFixed(2)); }
+
+            function calculateAndShow(bill) {
+                const tip = (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.2;
+                const total = bill + tip;
+                const tipF = format(tip);
+                const totalF = format(total);
+                const msg = `The bill was ${bill}, the tip was ${tipF}, and the total value ${totalF}`;
+                document.getElementById('result').textContent = msg;
+                console.log(msg);
+            }
+
+            document.getElementById('calcBtn').addEventListener('click', ()=>{
+                const bill = Number(document.getElementById('billInput').value);
+                if (!isFinite(bill)) return;
+                calculateAndShow(bill);
+            });
+
+            document.getElementById('clearBtn').addEventListener('click', ()=>{
+                document.getElementById('billInput').value = '';
+                document.getElementById('result').textContent = '';
+            });
+
+            document.querySelectorAll('.sample').forEach(b => b.addEventListener('click', (e)=>{
+                const v = Number(e.currentTarget.dataset.bill);
+                document.getElementById('billInput').value = v;
+                calculateAndShow(v);
+            }));
+        </script>
+        </body>
+</html>
