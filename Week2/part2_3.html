@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="Mmass"value="" type="text"placeholder ="Mweight">
+    <input id="Mheight" value="" type="text"placeholder ="Mheight">
+    <input id="Jmass" value="" type="text"placeholder ="Jweight">
+    <input id="Jheight" value="" type="text"placeholder ="Jheight">
+    <button id="cal">Calculate</button>
+    <script>
+        var button = document.getElementById("cal");
+        button.addEventListener("click", function() {
+            var Mmass = parseFloat(document.getElementById("Mmass").value);
+            var Mheight = parseFloat(document.getElementById("Mheight").value);
+            var Jmass = parseFloat(document.getElementById("Jmass").value);
+            var Jheight = parseFloat(document.getElementById("Jheight").value);
+
+            if (Number.isNaN(Mmass) || Number.isNaN(Mheight) || Number.isNaN(Jmass) || Number.isNaN(Jheight)) {
+                console.log('Vui lòng nhập tất cả các giá trị hợp lệ (số).');
+                return;
+            }
+            if (Mheight <= 0 || Jheight <= 0) {
+                console.log('Chiều cao phải lớn hơn 0.');
+                return;
+            }
+
+            var Mbmi = Mmass / (Mheight * Mheight);
+            var Jbmi = Jmass / (Jheight * Jheight);
+
+            console.log('Mark BMI:', Mbmi.toFixed(2));
+            console.log('John BMI:', Jbmi.toFixed(2)); 
+
+            if (Mbmi > Jbmi) {
+                console.log("Mark's BMI " + Mbmi.toFixed(2) + " is higher than John's " + Jbmi.toFixed(2));
+            } else if (Jbmi > Mbmi) {
+                console.log("John's BMI " + Jbmi.toFixed(2) + " is higher than Mark's " + Mbmi.toFixed(2));
+            } else {
+                console.log('Both have the same BMI: ' + Mbmi.toFixed(2));
+            }
+        });
+    </script>
+</body>
+</html>
