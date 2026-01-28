@@ -1,12 +1,9 @@
-import './App.css'
-import Bai2 from './buoi3/Bai2'
-
+import DemoUseMemo from './buoi3/demoUseMemo'
+import Bai3 from './buoi3/Bai3'
 function App() {
   return (
     <>
-  <div>
-  <Bai2 />
-  </div>
+     <Bai3 />
     </>
   )
 }
