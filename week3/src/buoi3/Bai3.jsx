@@ -16,7 +16,7 @@ function Bai3() {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
-  const filteredProducts = useMemo(() => {
+  const filteredProducts = useMemo(() => {  
     console.time("filter-useMemo");
 
     const result = products.filter(p => {
